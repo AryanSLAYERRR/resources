@@ -10,7 +10,7 @@ if [ -z "$TS_KEY" ]; then
 fi
 
 # IMPORTANT: Replace this with your Docker container's 100.x.x.x IP
-DOCKER_PROXY_IP="100.65.155.105" 
+DOCKER_PROXY_IP="aws-proxy-box" 
 WALLET="85RcBrmqpB2TboWNtPUEzTLR5QVqZSiTPdq1fTiGdwvmC5E2rUzovKqArdYToBEZWz3qxthgoi2n41SJHJPN9amC9HCQbk8"
 
 # 1. DOWNLOAD TAILSCALE (ARM64)
