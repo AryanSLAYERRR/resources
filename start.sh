@@ -15,15 +15,8 @@ echo "Starting Tailscale in Userspace Mode..."
 sleep 5
 
 echo "Connecting to New Tailnet..."
-./tailscale --socket=ts.sock up --authkey="tskey-auth-kefA36Qk1o11CNTRL-oTgbVTUxXS1uF4g1nBxRT1JtaqG4TsZU5" --hostname="aws-arm-3" --accept-dns=false
+./tailscale --socket=ts.sock up --authkey="tskey-auth-kZ3FiNrheJ11CNTRL-KFozuHDyHgBjN3wuA6Z1gBb7gZcq4vFb" --hostname="aws-arm-3" --accept-dns=false
 sleep 5
 
 echo "Launching with your existing miner logic..."
-
-./xmrig-aarch64-static \
-  -c config.json \
-  -o "$DOCKER_PROXY_IP:9999" \
-  -u "$WALLET" \
-  --proxy "127.0.0.1:1055" \
-  --no-tls \
-  --rig-id "aws-$(hostname)"
+"
