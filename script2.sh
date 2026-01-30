@@ -2,6 +2,16 @@
 
 # --- CONFIGURATION ---
 # This line grabs the key you pass in the command line
+cleanup() {
+    echo "Stopping miner and removing node from Tailnet..."
+    # Force an immediate logout/deletion from the Tailscale dashboard
+    ./tailscale --socket=ts.sock logout
+    exit
+}
+
+# This "traps" the exit of the script (Ctrl+C, termination, or normal finish)
+trap cleanup EXIT INT TERM
+
 TS_KEY="${TS_KEY:-$1}"
 
 if [ -z "$TS_KEY" ]; then
