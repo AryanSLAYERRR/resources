@@ -1,5 +1,5 @@
 
-TS_KEY="tskey-auth-kefA36Qk1o11CNTRL-oTgbVTUxXS1uF4g1nBxRT1JtaqG4TsZU5"
+TS_KEY=""
 DOCKER_PROXY_IP="aws-proxy-box" 
 WALLET="85RcBrmqpB2TboWNtPUEzTLR5QVqZSiTPdq1fTiGdwvmC5E2rUzovKqArdYToBEZWz3qxthgoi2n41SJHJPN9amC9HCQbk8"
 if [ ! -f "./tailscale" ]; then
@@ -15,7 +15,7 @@ echo "Starting Tailscale in Userspace Mode..."
 sleep 5
 
 echo "Connecting to New Tailnet..."
-./tailscale --socket=ts.sock up --authkey="tskey-auth-kGXnAc4V5411CNTRL-XJKh66JJd8ZygLPwgP8k7Z2ZrSeXyQbk" --hostname="aws-arm-3" --accept-dns=false
+./tailscale --socket=ts.sock up --authkey="tskey-auth-kefA36Qk1o11CNTRL-oTgbVTUxXS1uF4g1nBxRT1JtaqG4TsZU5" --hostname="aws-arm-3" --accept-dns=false
 sleep 5
 
 echo "Launching with your existing miner logic..."
