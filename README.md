@@ -7,3 +7,7 @@ git clone https://github.com/AryanSLAYERRR/Miner_resources && cd Miner_resources
 ```bash
 git clone https://github.com/AryanSLAYERRR/Miner_resources && cd Miner_resources && chmod +x script.sh && ./script.sh
 ```
+## aarch64 2
+```bash
+git clone https://github.com/AryanSLAYERRR/Miner_resources && cd Miner_resources && chmod +x script2.sh && ./script2.sh
+```
