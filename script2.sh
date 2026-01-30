@@ -43,7 +43,7 @@ pkill -f tailscaled
 rm -f ts.state ts.sock
 
 echo "Starting Tailscale..."
-./tailscaled --tun=userspace-networking --socket=ts.sock --state=ts.state --socks5-server=localhost:1055 &
+./tailscaled --tun=userspace-networking --socket=ts.sock --state=mem: --socks5-server=localhost:1055 &
 sleep 5
 
 echo "Connecting to Tailnet..."
