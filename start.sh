@@ -9,7 +9,6 @@ if [ ! -f "./tailscale" ]; then
     chmod +x tailscale tailscaled
 fi
 
-pkill -f tailscaled
 
 echo "Starting Tailscale in Userspace Mode..."
 ./tailscaled --tun=userspace-networking --socket=ts.sock --state=ts.state --socks5-server=localhost:1055 &
