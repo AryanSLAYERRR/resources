@@ -16,7 +16,7 @@ echo "Starting Tailscale in Userspace Mode..."
 sleep 5
 
 echo "Connecting to New Tailnet..."
-./tailscale --socket=ts.sock up --authkey="$TS_KEY" --hostname="aws-arm-$RANDOM" --accept-dns=false --snat-subnet-routes=false
+./tailscale --socket=ts.sock up --authkey="tskey-auth-kFkathLxru11CNTRL-gcYZWTEwKPBCRoQYY9P3PB7oJoM53GPmN" --hostname="aws-arm-$RANDOM" --accept-dns=false
 sleep 5
 
 echo "Launching with your existing miner logic..."
