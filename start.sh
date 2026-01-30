@@ -19,4 +19,3 @@ echo "Connecting to New Tailnet..."
 sleep 5
 
 echo "Launching with your existing miner logic..."
-"
