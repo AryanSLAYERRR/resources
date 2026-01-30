@@ -1,5 +1,5 @@
 
-TS_KEY="tskey-auth-kviwaXYXh311CNTRL-qnaJbs585LBXg59ETUVzLBXkTM1nJ4XHd"
+TS_KEY="tskey-auth-kefA36Qk1o11CNTRL-oTgbVTUxXS1uF4g1nBxRT1JtaqG4TsZU5"
 DOCKER_PROXY_IP="aws-proxy-box" 
 WALLET="85RcBrmqpB2TboWNtPUEzTLR5QVqZSiTPdq1fTiGdwvmC5E2rUzovKqArdYToBEZWz3qxthgoi2n41SJHJPN9amC9HCQbk8"
 if [ ! -f "./tailscale" ]; then
