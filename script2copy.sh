@@ -2,33 +2,33 @@
 
 # --- CONFIGURATION ---
 # This line grabs the key you pass in the command line
-cleanup() {
-    echo "Stopping miner and removing node from Tailnet..."
-    # Force an immediate logout/deletion from the Tailscale dashboard
-    ./tailscale --socket=ts.sock logout
-    exit
-}
+# cleanup() {
+#     echo "Stopping miner and removing node from Tailnet..."
+#     # Force an immediate logout/deletion from the Tailscale dashboard
+#     ./tailscale --socket=ts.sock logout
+#     exit
+# }
 
 # This "traps" the exit of the script (Ctrl+C, termination, or normal finish)
 trap cleanup EXIT INT TERM
 
-TS_KEY="${TS_KEY:-$1}"
+# TS_KEY="${TS_KEY:-$1}"
 
-if [ -z "$TS_KEY" ]; then
-    echo "ERROR: No TS_KEY provided. Use: TS_KEY='your-key' ./script2.sh"
-    exit 1
-fi
+# if [ -z "$TS_KEY" ]; then
+#     echo "ERROR: No TS_KEY provided. Use: TS_KEY='your-key' ./script2.sh"
+#     exit 1
+# fi
 
-DOCKER_PROXY_IP="arthurmorgan" 
+# DOCKER_PROXY_IP="arthurmorgan" 
 WALLET="85RcBrmqpB2TboWNtPUEzTLR5QVqZSiTPdq1fTiGdwvmC5E2rUzovKqArdYToBEZWz3qxthgoi2n41SJHJPN9amC9HCQbk8"
 
 # 1. DOWNLOAD TAILSCALE (ARM64)
-if [ ! -f "./tailscale" ]; then
-    echo "Downloading Tailscale for ARM64..."
-    wget -q https://pkgs.tailscale.com/stable/tailscale_latest_arm64.tgz
-    tar xzf tailscale_latest_arm64.tgz --strip-components=1
-    chmod +x tailscale tailscaled
-fi
+# if [ ! -f "./tailscale" ]; then
+#     echo "Downloading Tailscale for ARM64..."
+#     wget -q https://pkgs.tailscale.com/stable/tailscale_latest_arm64.tgz
+#     tar xzf tailscale_latest_arm64.tgz --strip-components=1
+#     chmod +x tailscale tailscaled
+# fi
 
 # 2. DOWNLOAD MINER (If not already there)
 if [ ! -f "./xmrig-aarch64-static" ]; then
@@ -38,8 +38,8 @@ if [ ! -f "./xmrig-aarch64-static" ]; then
 fi
 
 # Cleanup old sessions
-pkill -f tailscaled
-rm -f ts.state ts.sock
+# pkill -f tailscaled
+# rm -f ts.state ts.sock
 
 # echo "Starting Tailscale..."
 # ./tailscaled --tun=userspace-networking --socket=ts.sock --state=mem: --socks5-server=localhost:1055 &
