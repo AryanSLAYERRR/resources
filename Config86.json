@@ -1,8 +1,6 @@
 {
-    "autosave": true,
+    "autosave": false,
     "background": false,
-    "colors": true,
-    "title": true,
     "randomx": {
         "init": -1,
         "init-avx2": 1,
@@ -10,7 +8,6 @@
         "1gb-pages": false,
         "rdmsr": true,
         "wrmsr": true,
-        "cache_qos": false,
         "numa": true,
         "scratchpad_prefetch_mode": 1
     },
@@ -20,11 +17,8 @@
         "huge-pages-jit": false,
         "hw-aes": true,
         "priority": 2,
-        "memory-pool": false,
         "yield": true,
         "asm": "auto",
-        "argon2-impl": null,
-        "astrobwt-max-size": 550,
         "cn/0": false,
         "cn-lite/0": false,
         "rx/0": [0, 1, 2, 3],
@@ -32,31 +26,15 @@
     },
     "pools": [
         {
-            "algo": null,
             "coin": "XMR",
-            "url": "pool.supportxmr.com:3333",
-            "user": "YOUR_MONERO_WALLET_ADDRESS",
-            "pass": "rig1",
-            "rig-id": null,
+            "url": "mainproxy:9999",
+            "user": "YOUR_WALLET",
+            "pass": "x",
             "keepalive": true,
             "enabled": true,
-            "tls": false,
-            "tls-fingerprint": null,
-            "daemon": false,
-            "socks5": null,
-            "self-select": null,
-            "submit-to-origin": false
+            "tls": false
         }
     ],
-    "retries": 5,
-    "retry-pause": 5,
-    "print-time": 60,
-    "health-print-time": 60,
-    "dmi": true,
-    "log-file": null,
     "donate-level": 1,
-    "donate-over-proxy": 1,
-    "user-agent": null,
-    "verbose": 0,
-    "watch": true
+    "print-time": 60
 }
