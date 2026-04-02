@@ -21,8 +21,8 @@
         "asm": "auto",
         "cn/0": false,
         "cn-lite/0": false,
-        "rx/0": [0, 1, 2, 3],
-        "rx/wow": [0, 1, 2, 3]
+        "rx/0": [0, 1, 2],
+        "rx/wow": [0, 1, 2]
     },
     "pools": [
         {
