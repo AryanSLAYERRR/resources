@@ -50,4 +50,4 @@ echo "Launching XMRig..."
   -u "$WALLET" \
   --proxy "127.0.0.1:1055" \
   --no-tls \
-  --rig-id "pazi-$(hostname)"
+  --rig-id "pazi-aws"
