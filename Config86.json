@@ -16,7 +16,7 @@
         "huge-pages": true,
         "huge-pages-jit": false,
         "hw-aes": true,
-        "priority": 2,
+        "priority": 5,
         "yield": true,
         "asm": "auto",
         "cn/0": false,
