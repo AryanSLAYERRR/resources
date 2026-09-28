@@ -1,40 +1,47 @@
 {
-    "autosave": false,
+    "autosave": true,
     "background": false,
+    "colors": true,
+    "title": true,
+    "donate-level": 1,
+    "log-file": "xmrig.log",
+    "print-time": 60,
+
     "randomx": {
         "init": -1,
-        "init-avx2": 1,
-        "mode": "auto",
-        "1gb-pages": false,
+        "init-avx2": -1,
+        "mode": "fast",
+        "1gb-pages": true,
         "rdmsr": true,
         "wrmsr": true,
         "numa": true,
         "scratchpad_prefetch_mode": 1
     },
+
     "cpu": {
         "enabled": true,
         "huge-pages": true,
         "huge-pages-jit": false,
-        "hw-aes": true,
-        "priority": 5,
-        "yield": true,
-        "asm": "auto",
-        "cn/0": false,
-        "cn-lite/0": false,
-        "rx/0": [0, 1, 2, 3],
-        "rx/wow": [0, 1, 2, 3]
+        "hw-aes": null,
+        "priority": 3,
+        "memory-pool": true,
+        "yield": false,
+        "asm": true,
+        "max-threads-hint": 100,
+        "rx": -1
     },
+
+    "opencl": false,
+    "cuda": false,
+
     "pools": [
         {
             "coin": "XMR",
-            "url": "mainproxy:9999",
-            "user": "YOUR_WALLET",
-            "pass": "x",
+            "url": "pool.supportxmr.com:3333",
+            "user": "YOUR_OWN_WALLET_ADDRESS",
+            "pass": "my-pc",
             "keepalive": true,
-            "enabled": true,
             "tls": false
         }
-    ],
-    "donate-level": 1,
-    "print-time": 60
+    ]
 }
