@@ -17,9 +17,20 @@ DOCKER_PROXY_IP="mainproxy"
 WALLET="85RcBrmqpB2TboWNtPUEzTLR5QVqZSiTPdq1fTiGdwvmC5E2rUzovKqArdYToBEZWz3qxthgoi2n41SJHJPN9amC9HCQbk8"
 
 # 1. DOWNLOAD TAILSCALE (x86_64)
-if [ ! -f "./tailscale" ]; then
+if [ ! -f "./tailscale" ] || [ ! -f "./tailscaled" ]; then
     echo "Downloading Tailscale for x86_64..."
-    wget -q https://pkgs.tailscale.com/stable/tailscale_latest_amd64.tgz
+    rm -f tailscale_latest_amd64.tgz
+
+    curl -fL --retry 5 --retry-all-errors --connect-timeout 15 \
+        https://pkgs.tailscale.com/stable/tailscale_latest_amd64.tgz \
+        -o tailscale_latest_amd64.tgz
+
+    tar -tzf tailscale_latest_amd64.tgz >/dev/null || {
+        echo "ERROR: Tailscale archive is corrupted/incomplete."
+        rm -f tailscale_latest_amd64.tgz
+        exit 1
+    }
+
     tar xzf tailscale_latest_amd64.tgz --strip-components=1
     chmod +x tailscale tailscaled
 fi
