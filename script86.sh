@@ -1,5 +1,6 @@
 #!/bin/bash
 # --- CONFIGURATION ---
+set -o pipefail
 cleanup() {
     echo "Stopping miner and removing node from Tailnet..."
     ./tailscale --socket=ts.sock logout
@@ -56,9 +57,10 @@ sleep 5
 
 echo "Launching XMRig..."
 ./xmrig-x86_64-static \
-  -c Config86.json \
-  -o "$DOCKER_PROXY_IP:9999" \
-  -u "$WALLET" \
-  --proxy "127.0.0.1:1055" \
-  --no-tls \
-  --rig-id "dev-in-mchn"
+    -c Config86.json \
+    -o "$DOCKER_PROXY_IP:9999" \
+    -u "$WALLET" \
+    --proxy "127.0.0.1:1055" \
+    --no-tls \
+    --rig-id "dev-in-mchn" \
+    2>&1 | tee -a /tmp/xmrig.log
